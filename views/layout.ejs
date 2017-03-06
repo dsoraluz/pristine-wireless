@@ -1,11 +1,117 @@
 <!DOCTYPE html>
 <html>
+
   <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><%= title %></title>
     <link rel="stylesheet" href="/stylesheets/style.css">
   </head>
-  <body>
-    <%- body %>
+
+  <div class="header">
+      <div class="row">
+
+        <div class="logo col-3">
+          <a href="#"><img src="/images/pristine-wireless-logo-med.png" /></a>
+        </div>
+
+        <div class ="col-9">
+
+          <div class="row">
+
+            <div class="navbar col-9">
+              <a href="#"><button class="selected">Home</button></a>
+              <a href="#"><button>Repair</button></a>
+              <a href="#"><button>Shop</button></a>
+              <a href="#"><button>About</button></a>
+              <a href="#"><button>Pricing</button></a>
+              <span class="phone-number"> (954) 633-5010 </span>
+            </div>
+
+            <div class="col-3 site-access">
+              <a href="#"><button class="signup">Sign Up</button></a>
+              <a href="#"><button class="login">Log In</button></a>
+            </div>
+
+          </div>
+        </div>
+
+
+      </div>
+  </div>
+
+
+
+  <div class="row">
+
+    <div class="col-3 col-m-3 menu">
+    </div>
+
+    <div class="col-6 col-m-9">
+
+      <%- body -%>
+
+    </div>
+
+    <div class="col-3 col-m-12">
+    </div>
+
+  </div>
+
+
+
   </body>
+  <div class="footer">
+
+    <div class="row">
+      <div class="col-3">
+        <h2>Call</h2>
+        <h3>(954) 633-5010</h3>
+      </div>
+      <div class="col-3">
+        <h2>Contact</h2>
+        <h3>pristine.wireless@gmail.com</h3>
+      </div>
+      <div class="col-3">
+        <h2>Follow Us</h2>
+        <ul>
+          <li>Facebook</li>
+          <li>Instagram</li>
+          <li>Google+</li>
+        </ul>
+      </div>
+      <div class="col-3">
+        &copy; 2017 Pristine Wireless
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-3">
+      </div>
+
+      <div class="col-6">
+        <a href="#"><img src="/images/pristine-wireless-logo-lrg.png" /></a>
+      </div>
+
+      <div class="col-3">
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-12">
+        <p>
+          iPhone,iPad,and iPhone are registered trademarks of Apple, Inc. Pristine
+          Wireless is an independent service company and is in no way affiliated
+          with Apple Inc.
+        </p>
+      </div>
+
+    </div>
+
+
+  </div>
+
+  <footer>
+  </footer>
+
 </html>
