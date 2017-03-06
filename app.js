@@ -44,6 +44,12 @@ app.use(session({
   saveUnitialized: true
 }));
 
+
+
+app.use(flash());
+app.use(passport.initialize());
+app.use(passport.session());
+
 app.use((req,res,next)=>{
   if(req.user){
     res.locals.user = req.user;
@@ -55,22 +61,24 @@ app.use((req,res,next)=>{
 });
 
 //Local strategy - authentication is coming from internal check of records.
-passport.use(new LocalStrategy((email, password, next)=>{
-  console.log("fail");
+//By default the usernameField of the local strategy is set to 'username'
+//By default the passwordField of the local strategy is set to 'password'
+//If you want to check on anything else you need to over right the usernameField
+//// by passing an object like below.
+passport.use(new LocalStrategy({
+  usernameField: 'email'
+},(email, password, next)=>{
   //Check first if the database has an entry with that username.
   User.findOne({email}, (err, user)=>{
     if (err){
-      console.log("failed");
       return next(err);
     }
     //if user exits (fail) (authentication failed)-- (error message)
     else if(!user){
-      console.log("Incorrect email");
       return next(null, false, {message: "Incorrect email"});
 
     }
     else if (!bcrypt.compareSync(password, user.password)) {
-      console.log("Incorrect email");
       return next(null, false, { message: "Incorrect password"});
     }else{
       //Return the user that we found.
@@ -94,10 +102,6 @@ passport.deserializeUser((id, cb)=>{
     cb(null,user);
   });
 });
-
-app.use(flash());
-app.use(passport.initialize());
-app.use(passport.session());
 
 
 

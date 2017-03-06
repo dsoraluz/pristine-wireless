@@ -91,4 +91,14 @@ authRoutes.post("/login",
   passReqToCallback: true
 }));
 
+//Get route for logout
+//simply destroys the session
+//does not destroy the cookie
+//it clears all the information associated with the session (ie. currentUser)
+authRoutes.get('/logout',(req,res,next)=>{
+  req.logout(); //Instead of destroy().. it now works for all different strategies (google,facebook,etc.)
+  req.flash('success', 'You have logged out.');
+    res.redirect('/');
+});
+
 module.exports = authRoutes;
