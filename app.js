@@ -43,22 +43,34 @@ app.use(session({
   resave: true,
   saveUnitialized: true
 }));
-app.use(flash());
-app.use(passport.initialize());
-app.use(passport.session());
+
+app.use((req,res,next)=>{
+  if(req.user){
+    res.locals.user = req.user;
+  } else {
+    res.locals.user = null;
+  }
+  console.log(req.user);
+  next();
+});
 
 //Local strategy - authentication is coming from internal check of records.
 passport.use(new LocalStrategy((email, password, next)=>{
+  console.log("fail");
   //Check first if the database has an entry with that username.
   User.findOne({email}, (err, user)=>{
     if (err){
+      console.log("failed");
       return next(err);
     }
     //if user exits (fail) (authentication failed)-- (error message)
     else if(!user){
+      console.log("Incorrect email");
       return next(null, false, {message: "Incorrect email"});
+
     }
     else if (!bcrypt.compareSync(password, user.password)) {
+      console.log("Incorrect email");
       return next(null, false, { message: "Incorrect password"});
     }else{
       //Return the user that we found.
@@ -83,12 +95,20 @@ passport.deserializeUser((id, cb)=>{
   });
 });
 
+app.use(flash());
+app.use(passport.initialize());
+app.use(passport.session());
+
+
+
 
 //------------------ ROUTES GO HERE ------------------
 const index = require('./routes/index');
 const authRoutes = require('./routes/auth-routes');
+const protRoutes = require('./routes/protected-routes');
 app.use('/', index);
 app.use('/', authRoutes);
+app.use('/', protRoutes);
 //----------------------------------------------------
 
 // catch 404 and forward to error handler

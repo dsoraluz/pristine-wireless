@@ -30,8 +30,13 @@
             </div>
 
             <div class="col-3 site-access">
-              <a href="/signup"><button class="signup">Sign Up</button></a>
-              <a href="/login"><button class="login">Log In</button></a>
+              <% if(user){ %>
+                <a href="/logout"><button class="signup">Log Out</button></a>
+              <% }else { %>
+
+                <a href="/signup"><button class="signup">Sign Up</button></a>
+                <a href="/login"><button class="login">Log In</button></a>
+              <% } %>
             </div>
 
           </div>
