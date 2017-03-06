@@ -1,0 +1,19 @@
+<div id="auth-title">
+  <h1>Log In</h1>
+</div>
+
+<% if (errorMessage.length > 0) { %>
+  <div id="error"><%= errorMessage %></div>
+<% } %>
+
+<form id="form" action="/login" method="post">
+  <label for="email">Email</label><br />
+  <input type="text" name="Email" placeholder="Email"/>
+  <br></br>
+
+  <label for="password">Password</label><br />
+  <input type="password" name="password" placeholder="Password" />
+  <br></br>
+
+  <button>Log In</button>
+</form>
