@@ -4,7 +4,7 @@ const protRoutes = express.Router();
 const Phone = require('../models/phone.js');
 const multer = require('multer');
 const uploads = multer({
-  dest: __dirname + '/..public/uploads'
+  dest: __dirname + '/../public/uploads/'
 });
 
 //Get route for the
@@ -16,7 +16,7 @@ protRoutes.get('/phones/new',ensure.ensureLoggedIn(), (req,res,next)=>{
 protRoutes.post('/phones', ensure.ensureLoggedIn(),uploads.single('picture'), (req,res,next)=>{
   const filename = req.file.filename;
 
-  const newPhone = ({
+  const newPhone = new Phone ({
     brand: req.body.brand,
     model: req.body.model,
     condition: req.body.condition,
@@ -31,7 +31,7 @@ protRoutes.post('/phones', ensure.ensureLoggedIn(),uploads.single('picture'), (r
   });
 
 
-  newPhone.save((err)=>{
+  newPhone.save ((err)=>{
     if(err){
       next(err);
       return;
