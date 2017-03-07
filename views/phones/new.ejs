@@ -2,7 +2,7 @@
   <h1>Add a New Phone</h1>
 </div>
 
-<form id="form" action="/signup" method="post">
+<form id="form" action="/phones" method="post" enctype="multipart/form-data">
   <label for="brand">Brand</label><br>
   <input type="text" name="brand"
     placeholder="Apple">
@@ -11,6 +11,11 @@
   <label for="model">Model</label><br>
   <input type="text" name="model"
     placeholder="iPhone 6">
+  <br><br>
+
+  <label for="condition">Condition (New, Mint, or Used)</label><br>
+  <input type="text" name="condition"
+    placeholder="Mint">
   <br><br>
 
   <label for="color">Color</label><br>
@@ -38,14 +43,13 @@
     placeholder="yes or no">
   <br><br>
 
-  <label for="flaws">Noticable Flaws</label><br>
-  <input type="text-area" name="flaws"
+  <label for="additionalDetails">Additional Details</label><br>
+  <input type="text" name="additionalDetails"
     placeholder="Describe any notable damage/wear (dents/scatches/bends)">
   <br><br>
 
-  <label for="imageUrl">Images</label><br>
-  <input type="text" name="imageUrl"
-    placeholder="Add pictures (insert URL)">
+  <label for="imageUrl">Images (browse for files on local computer)</label><br>
+  <input type="file" name="filename"
   <br><br>
 
   <button>Add Phone</button>

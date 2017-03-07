@@ -85,7 +85,7 @@ authRoutes.get('/login', (req,res,next)=>{
 authRoutes.post("/login",
  passport.authenticate("local", {
   successReturnToOrRedirect: "/", //instead of successRedirect (which takes you to home no matter where you were).. successReturnToOrRedirect takes you to the last page you were on.
-  failureRedirect: "/signup",
+  failureRedirect: "/login",
   failureFlash: true, //get flash messages from login fail.
   successFlash: 'You have been logged in, user', //get flash messages from login success
   passReqToCallback: true
