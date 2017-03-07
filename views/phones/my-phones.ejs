@@ -1,0 +1,55 @@
+<div id="auth-title">
+  <h1><%= user.firstName %>'s Phones For Sale</h1>
+  <a href="/phones/new">Add a New Phone</a>
+</div>
+
+<ul>
+  <% phones.forEach((onePhone)=>{ %>
+
+    <a href="/phones/<%= onePhone._id %>/edit"><button> Edit </button></a>
+
+    <form action="/phones/<%= onePhone._id %>/delete" method="post">
+      <button type = "submit">Delete</button>
+    </form>
+    <br></br>
+    <img src="<%= onePhone.imageUrl %>" />
+    <br></br>
+    <li>
+      Brand: <%= onePhone.brand %>
+    </li>
+    <br></br>
+    <li>
+      Model: <%= onePhone.model %>
+    </li>
+    <br></br>
+    <li>
+      Condition: <%= onePhone.condition %>
+    </li>
+    <br></br>
+    <li>
+      Color: <%= onePhone.color %>
+    </li>
+    <br></br>
+    <li>
+      Memory: <%= onePhone.memory %>
+    </li>
+    <br></br>
+    <li>
+      Price: $<%= onePhone.price %>
+    </li>
+    <br></br>
+    <li>
+      Provider: <%= onePhone.provider %>
+    </li>
+    <br></br>
+    <li>
+      Unlocked: <%= onePhone.unlocked %>
+    </li>
+    <br></br>
+    <li>
+      Details: <%= onePhone.additionalDetails %>
+    </li>
+    <br></br>
+
+  <% }) %>
+</ul>

@@ -32,6 +32,8 @@
 
             <div class="col-3 site-access">
               <% if(user){ %>
+                <span>Hello <%= user.firstName %></span>
+                <a href="/dashboard"><button class="signup">View Profile</button></a>
                 <a href="/logout"><button class="signup">Log Out</button></a>
               <% }else { %>
 

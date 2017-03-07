@@ -1,0 +1,56 @@
+<div id="action-title">
+  <h1>Edit Listing</h1>
+</div>
+
+<form id="form" action="/phones/<%= phone._id %>" method="post" enctype="multipart/form-data">
+  <label for="brand">Brand</label><br>
+  <input type="text" name="brand"
+    value="<%= phone.brand %>"
+  <br><br>
+
+  <label for="model">Model</label><br>
+  <input type="text" name="model"
+    value="<%= phone.model %>">
+  <br><br>
+
+  <label for="condition">Condition (New, Mint, or Used)</label><br>
+  <input type="text" name="condition"
+    value="<%= phone.condition %>">
+  <br><br>
+
+  <label for="color">Color</label><br>
+  <input type="text" name="color"
+    value="<%= phone.color %>">
+  <br><br>
+
+  <label for="memory">Memory (in GB)</label><br>
+  <input type="text" name="memory"
+    value="<%= phone.memory %>">
+  <br><br>
+
+  <label for="price">Price</label><br>
+  <input type="text" name="price"
+    value="<%= phone.price %>">
+  <br><br>
+
+  <label for="provider">Provider</label><br>
+  <input type="text" name="provider"
+    value="<%= phone.provider %>">
+  <br><br>
+
+  <label for="unlocked">Unlocked</label><br>
+  <input type="text" name="unlocked"
+    value="<%= phone.unlocked %>">
+  <br><br>
+
+  <label for="additionalDetails">Additional Details</label><br>
+  <input type="text" name="additionalDetails"
+    value="<%= phone.additionalDetails %>">
+  <br><br>
+
+  <label for="picture-input">Images (browse for files on local computer)</label><br>
+  <input type="file" name="picture"
+  <br><br>
+
+  <button>Edit Phone</button>
+</form>

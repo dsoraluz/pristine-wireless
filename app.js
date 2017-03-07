@@ -56,7 +56,6 @@ app.use((req,res,next)=>{
   } else {
     res.locals.user = null;
   }
-  console.log(req.user);
   next();
 });
 
