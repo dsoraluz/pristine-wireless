@@ -12,8 +12,15 @@ protRoutes.get('/phones/new',ensure.ensureLoggedIn(), (req,res,next)=>{
   res.render('phones/new');
 });
 
-
+//Note: Multer has to be this to works
+//                                 |          ('picture')
+//                                 ----------------------------------
+//   refers to <input type="file" name="picture"> in phones/new.ejs |
+//
 protRoutes.post('/phones', ensure.ensureLoggedIn(),uploads.single('picture'), (req,res,next)=>{
+  // Note that req.file.filename referes to an attribute of .file that does not get defined by
+  // developer.. Meaning that "file.filename" will return the literal filename of the file as a string.
+  //It is then used as a means to populate the imageUrl for our phoneInfo object.
   const filename = req.file.filename;
 
   const newPhone = new Phone ({
