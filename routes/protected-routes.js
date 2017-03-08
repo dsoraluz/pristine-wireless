@@ -80,10 +80,10 @@ protRoutes.post('/phones/:id',ensure.ensureLoggedIn(),uploads.single('picture'),
   // const filename = req.file.filename;
   // console.log(uploads);
 
-  // const phoneId = req.params.id;
+  const phoneId = req.params.id;
   //
   //
-  // if(req.file.filename !== undefined){
+  // if(req.file){
   //   let filename = req.file.filename;
   // }
   //
@@ -107,7 +107,7 @@ protRoutes.post('/phones/:id',ensure.ensureLoggedIn(),uploads.single('picture'),
   // });
   let phoneUpdates = '';
 
-  if(req.file.filename === 'undefined'){
+  if(typeof req.file === 'undefined'){
     phoneUpdates = {
       brand: req.body.brand,
       model: req.body.model,
