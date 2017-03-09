@@ -1,35 +1,45 @@
-<div id="action-title">
-  <h1>Edit Profile</h1>
-</div>
-
-<form id="form" action="/dashboard/profile/<%= user._id %>" method="post">
-  <label for="firstName">First Name</label><br>
-  <input type="text" name="firstName"
-    value="<%= user.firstName %>">
-  <br><br>
-
-  <label for="lastName">Last Name</label><br>
-  <input type="text" name="lastName"
-    value="<%= user.lastName %>">
-  <br><br>
-
-  <label for="email">Email</label><br>
-  <input type="text" name="email"
-    value="<%= user.email %>">
-  <br><br>
-
-  <div id="action-title">
-    <h3>Change Password</h3>
+<div class="row">
+  <div class="col-3">
   </div>
 
-  <label for="password"> <strong>Enter Current Password</strong></label><br>
-  <input type="text" name="currentPassword" />
-  <br><br>
+  <div id="action-title" class="col-6">
+    <h1>Edit Profile</h1>
 
-  <label for="password"><strong>Enter New Password</strong></label><br>
-  <input type="text" name="newPassword" />
-  <br><br>
+    <form id="form" action="/dashboard/profile/<%= user._id %>" method="post">
+      <label for="firstName">First Name</label><br>
+      <input type="text" name="firstName"
+      value="<%= user.firstName %>">
+      <br><br>
+
+      <label for="lastName">Last Name</label><br>
+      <input type="text" name="lastName"
+      value="<%= user.lastName %>">
+      <br><br>
+
+      <label for="email">Email</label><br>
+      <input type="text" name="email"
+      value="<%= user.email %>">
+      <br><br>
+
+      <div id="action-title">
+        <h3>Change Password</h3>
+      </div>
+
+      <label for="password"> <strong>Enter Current Password</strong></label><br>
+      <input type="text" name="currentPassword" />
+      <br><br>
+
+      <label for="password"><strong>Enter New Password</strong></label><br>
+      <input type="text" name="newPassword" />
+      <br><br>
 
 
-  <button>Save</button>
-</form>
+      <button>Save</button>
+    </form>
+  </div>
+
+
+  <div class="col-3">
+
+  </div>
+</div>

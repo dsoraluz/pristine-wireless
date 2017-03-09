@@ -76,6 +76,7 @@ protRoutes.get('/phones/:id/edit',(req,res,next)=>{
   });
 });
 
+//Post route for edit
 protRoutes.post('/phones/:id',ensure.ensureLoggedIn(),uploads.single('picture'),(req,res,next)=>{
   // const filename = req.file.filename;
   // console.log(uploads);
@@ -193,6 +194,27 @@ protRoutes.post('/dashboard/profile/:id',ensure.ensureLoggedIn(),(req,res, next)
     }
     res.redirect('/dashboard');
   });
+});
+
+protRoutes.get('/phones/my-phones/search',(req,res,next)=>{
+  const searchTerm = req.query.searchTerm;
+
+  if (searchTerm){
+    Phone.search(searchTerm,(err, results)=>{
+      console.log("results:", results);
+      if(err){
+        next(err);
+        return;
+      }
+      res.render('phones/my-phones',{
+        phones: results
+      });
+    });
+
+  }else{
+
+    res.redirect('/phones/my-phones');
+  }
 });
 
 module.exports = protRoutes;

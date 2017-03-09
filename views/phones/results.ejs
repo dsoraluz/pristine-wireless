@@ -7,7 +7,7 @@
     </div>
 
     <div id="auth-title" class="col-12">
-      <h1>All Phones For Sale</h1>
+      <h1>Phones Matching: "<%= searchTerm %>" </h1>
       <h3>Total: <%= phones.length %></h3>
       <form id="form" action="/phones/search" method="get">
         <input type="text" name="searchTerm"

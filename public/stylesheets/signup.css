@@ -12,6 +12,7 @@
   padding: 20px;
 }
 
+
 #form {
   margin: 30px auto;
   width: 50%;
@@ -53,4 +54,12 @@
   background: #62B331;
   color: #fff;
   transition: .3s ease background;
+}
+
+.search-button {
+  padding-left: 0px;
+}
+
+.view-all-button {
+  padding-right: 0px;
 }

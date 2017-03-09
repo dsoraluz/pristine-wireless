@@ -1,6 +1,22 @@
-<div = "auth-title">
-  <h1><%= user.firstName %>'s Dashboard</h1>
-</div>
+<div class="section">
+  <div class="container">
 
-<a href="/phones/my-phones"><button>View my phones</button></a>
-<a href="/dashboard/profile/<%= user._id %>/edit"><button>Edit Profile</button></a>
+    <div class="row">
+
+      <div class="col-3">
+        <a href="/phones/my-phones"><button>View my phones</button></a>
+      </div>
+
+      <div id="auth-title" class="col-6">
+        <h1><%= user.firstName %>'s Dashboard</h1>
+        <a href="/dashboard/profile/<%= user._id %>/edit"><button>Edit Profile</button></a>
+      </div>
+
+      <div class="col-3">
+        <a href="/phones/new"><button>Add a New Phone</button></a>
+      </div>
+
+    </div>
+
+  </div>
+</div>

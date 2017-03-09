@@ -5,14 +5,14 @@ const Schema = mongoose.Schema;
 mongoose.plugin(require('mongoose-regex-search'));
 
 const phoneSchema = new Schema({
-  brand: {type: String, required: true},
-  model: {type: String, required: true},
-  condition: {type: String, required: true},
-  memory: {type: String, required: true},
-  color: {type: String, required: true},
-  price: {type: String, required: true},
-  provider: {type: String, required: true},
-  unlocked:{type: String, required: true},
+  brand: {type: String, index: true, searchable: true, required: true},
+  model: {type: String, index: true, searchable: true, required: true},
+  condition: {type: String, index: true, searchable: true, required: true},
+  memory: {type: String,index: true, searchable: true, required: true},
+  color: {type: String, index: true, searchable: true, required: true},
+  price: {type: String, index: true, searchable: true, required: true},
+  provider: {type: String,index: true, searchable: true, required: true},
+  unlocked:{type: String, index: true, searchable: true, required: true},
   additionalDetails: {type: String, required: true},
   imageUrl: {type: String, required: true},
   owner: {type: Schema.Types.ObjectId, ref:'User'}

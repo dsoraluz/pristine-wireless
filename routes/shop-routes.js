@@ -14,20 +14,25 @@ shopRoutes.get('/phones',(req,res,next)=>{
 });
 
 shopRoutes.get('/phones/search',(req,res,next)=>{
-  res.render('phones/search');
+  const searchTerm = req.query.searchTerm;
+
+  if (searchTerm){
+    Phone.search(searchTerm,(err, results)=>{
+      console.log("results:", results);
+      if(err){
+        next(err);
+        return;
+      }
+      res.render('phones/results',{
+        searchTerm: searchTerm,
+        phones: results
+      });
+    });
+
+  }else{
+
+    res.redirect('/phones');
+  }
 });
 
-shopRoutes.post('/phones/search',(req,res,next)=>{
-  console.log("crapout");
-  const searchTerm = req.body.searchTerm;
-  console.log(searchTerm);
-  Phone.search(searchTerm,(err, results)=>{
-    console.log("results:"+results);
-    if(err){
-      next(err);
-      return;
-    }
-    res.redirect('/phones/search');
-  });
-});
 module.exports = shopRoutes;

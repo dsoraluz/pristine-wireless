@@ -1,55 +1,95 @@
-<div id="auth-title">
-  <h1><%= user.firstName %>'s Phones For Sale</h1>
-  <a href="/phones/new">Add a New Phone</a>
+<div class="section">
+<div class="container">
+
+  <div class="row">
+
+    <div class="col-3">
+    </div>
+
+    <div id="auth-title" class="col-6">
+      <h1><%= user.firstName %>'s Phones For Sale</h1>
+      <h3>Total: <%= phones.length %></h3>
+      <form id="form" action="/phones/my-phones/search" method="get">
+        <input type="text" name="searchTerm"
+          placeholder="Search your listings by Brand, Model, Condition, etc.">
+        <br><br>
+
+        <div class="row">
+          <div class="col-6 search-button">
+            <button>Search</button>
+          </div>
+          <div class="col-6 view-all-button">
+            <button>View all</button>
+          </div>
+
+        </div>
+
+      </form>
+    </div>
+
+    <div class="col-3">
+      <a href="/phones/new"><button>Add a New Phone</button></a>
+    </div>
+
+  </div>
+
+  <% for(let columnCount, index = 0; index < phones.length;columnCount +=1, index+=1 ){ %>
+    <div class="row">
+    <% if(columnCount % 4 === 0){ %>
+      <div class="row">
+    <% } %>
+    <div class="col-3">
+      <a href="/phones/<%= phones[index]._id %>/edit"><button>Edit</button></a>
+      <a href="/phones/<%= phones[index]._id %>/delete"><button>Delete</button></a>
+      <ul>
+        <img src="<%= phones[index].imageUrl %>" />
+        <br></br>
+        <li>
+          Brand: <%= phones[index].brand %>
+        </li>
+        <br></br>
+        <li>
+          Model: <%= phones[index].model %>
+        </li>
+        <br></br>
+        <li>
+          Condition: <%= phones[index].condition %>
+        </li>
+        <br></br>
+        <li>
+          Color: <%= phones[index].color %>
+        </li>
+        <br></br>
+        <li>
+          Memory: <%= phones[index].memory %>
+        </li>
+        <br></br>
+        <li>
+          Price: $<%= phones[index].price %>
+        </li>
+        <br></br>
+        <li>
+          Provider: <%= phones[index].provider %>
+        </li>
+        <br></br>
+        <li>
+          Unlocked: <%= phones[index].unlocked %>
+        </li>
+        <br></br>
+        <li>
+          Details: <%= phones[index].additionalDetails %>
+        </li>
+        <br></br>
+
+      </ul>
+    </div>
+
+    <% if(columnCount % 4 === 0){ %>
+    </div>
+  <% } %>
+<% } %>
+
 </div>
 
-<ul>
-  <% phones.forEach((onePhone)=>{ %>
-
-    <a href="/phones/<%= onePhone._id %>/edit"><button> Edit </button></a>
-
-    <form action="/phones/<%= onePhone._id %>/delete" method="post">
-      <button type = "submit">Delete</button>
-    </form>
-    <br></br>
-    <img src="<%= onePhone.imageUrl %>" />
-    <br></br>
-    <li>
-      Brand: <%= onePhone.brand %>
-    </li>
-    <br></br>
-    <li>
-      Model: <%= onePhone.model %>
-    </li>
-    <br></br>
-    <li>
-      Condition: <%= onePhone.condition %>
-    </li>
-    <br></br>
-    <li>
-      Color: <%= onePhone.color %>
-    </li>
-    <br></br>
-    <li>
-      Memory: <%= onePhone.memory %>
-    </li>
-    <br></br>
-    <li>
-      Price: $<%= onePhone.price %>
-    </li>
-    <br></br>
-    <li>
-      Provider: <%= onePhone.provider %>
-    </li>
-    <br></br>
-    <li>
-      Unlocked: <%= onePhone.unlocked %>
-    </li>
-    <br></br>
-    <li>
-      Details: <%= onePhone.additionalDetails %>
-    </li>
-    <br></br>
-
-  <% }) %>
-</ul>
+</div>
+</div>
