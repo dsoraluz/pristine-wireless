@@ -1,52 +1,68 @@
-<div id="auth-title">
-  <h1>Phones For Sale</h1>
-  <h3>Total: <%= phones.length %></h3>
-  <a href="/phones/new">Add a New Phone</a>
-</div>
+<div class="section">
+<div class="container">
+  <div class="row">
+    <div id="auth-title" class="col-12">
+      <h1>Phones For Sale</h1>
+      <h3>Total: <%= phones.length %></h3>
+      <a href="/phones/new">Add a New Phone</a>
+    </div>
+  </div>
 
-<div class = "phones-view">
+      <% for(let columnCount, index = 0; index < phones.length;columnCount +=1, index+=1 ){ %>
+        <div class="row">
+        <% if(columnCount % 4 === 0){ %>
+          <div class="row">
+        <% } %>
+        <div class="col-3">
+          <ul>
+            <img src="<%= phones[index].imageUrl %>" />
+            <br></br>
+            <li>
+              Brand: <%= phones[index].brand %>
+            </li>
+            <br></br>
+            <li>
+              Model: <%= phones[index].model %>
+            </li>
+            <br></br>
+            <li>
+              Condition: <%= phones[index].condition %>
+            </li>
+            <br></br>
+            <li>
+              Color: <%= phones[index].color %>
+            </li>
+            <br></br>
+            <li>
+              Memory: <%= phones[index].memory %>
+            </li>
+            <br></br>
+            <li>
+              Price: $<%= phones[index].price %>
+            </li>
+            <br></br>
+            <li>
+              Provider: <%= phones[index].provider %>
+            </li>
+            <br></br>
+            <li>
+              Unlocked: <%= phones[index].unlocked %>
+            </li>
+            <br></br>
+            <li>
+              Details: <%= phones[index].additionalDetails %>
+            </li>
+            <br></br>
 
-    <% phones.forEach((onePhone)=>{ %>
-      <ul>
-        <img src="<%= onePhone.imageUrl %>" />
-        <br></br>
-        <li>
-          Brand: <%= onePhone.brand %>
-        </li>
-        <br></br>
-        <li>
-          Model: <%= onePhone.model %>
-        </li>
-        <br></br>
-        <li>
-          Condition: <%= onePhone.condition %>
-        </li>
-        <br></br>
-        <li>
-          Color: <%= onePhone.color %>
-        </li>
-        <br></br>
-        <li>
-          Memory: <%= onePhone.memory %>
-        </li>
-        <br></br>
-        <li>
-          Price: $<%= onePhone.price %>
-        </li>
-        <br></br>
-        <li>
-          Provider: <%= onePhone.provider %>
-        </li>
-        <br></br>
-        <li>
-          Unlocked: <%= onePhone.unlocked %>
-        </li>
-        <br></br>
-        <li>
-          Details: <%= onePhone.additionalDetails %>
-        </li>
-        <br></br>
+          </ul>
+        </div>
 
-      </ul>
-      <% }) %>
+        <% if(columnCount % 4 === 0){ %>
+        </div>
+      <% } %>
+    <% } %>
+
+  </div>
+
+  </div>
 </div>

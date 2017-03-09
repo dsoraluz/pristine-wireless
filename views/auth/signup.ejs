@@ -1,32 +1,45 @@
+<div class="row">
 
-  <div id="auth-title">
-    <h1>Sign Up</h1>
+  <div class="col-3 col-m-3 menu">
   </div>
 
-  <% if (typeof errorMessage !== "undefined") { %>
-    <div id="error"><%= errorMessage %></div>
-  <% } %>
+  <div class="col-6 col-m-9">
 
-  <form id="form" action="/signup" method="post">
-    <label for="firstName">First Name</label><br>
-    <input type="text" name="firstName"
-      placeholder="Anakin">
-    <br><br>
+    <div id="auth-title">
+      <h1>Sign Up</h1>
+    </div>
 
-    <label for="lastName">Last Name</label><br>
-    <input type="text" name="lastName"
-      placeholder="Skywalker">
-    <br><br>
+    <% if (typeof errorMessage !== "undefined") { %>
+      <div id="error"><%= errorMessage %></div>
+      <% } %>
 
-    <label for="email">Email</label><br>
-    <input type="text" name="email"
-      placeholder="AnakinSkywalker@sky.net">
+      <form id="form" action="/signup" method="post">
+        <label for="firstName">First Name</label><br>
+        <input type="text" name="firstName"
+        placeholder="Anakin">
+        <br><br>
 
-    <br><br>
-    <label for="password">Password</label><br>
-    <input type="password" name="password"
-      placeholder="DeathStar">
-    <br><br>
+        <label for="lastName">Last Name</label><br>
+        <input type="text" name="lastName"
+        placeholder="Skywalker">
+        <br><br>
 
-    <button>Create account</button>
-  </form>
+        <label for="email">Email</label><br>
+        <input type="text" name="email"
+        placeholder="AnakinSkywalker@sky.net">
+
+        <br><br>
+        <label for="password">Password</label><br>
+        <input type="password" name="password"
+        placeholder="DeathStar">
+        <br><br>
+
+        <button>Create account</button>
+      </form>
+
+  </div>
+
+  <div class="col-3 col-m-12">
+  </div>
+
+</div>

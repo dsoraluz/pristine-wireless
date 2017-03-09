@@ -2,6 +2,8 @@ const mongoose = require('mongoose');
 
 const Schema = mongoose.Schema;
 
+mongoose.plugin(require('mongoose-regex-search'));
+
 const phoneSchema = new Schema({
   brand: {type: String, required: true},
   model: {type: String, required: true},
