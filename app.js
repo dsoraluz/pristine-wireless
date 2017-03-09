@@ -14,10 +14,13 @@ const LocalStrategy = require('passport-local').Strategy;
 const bcrypt = require('bcrypt');
 const flash = require('connect-flash');
 
+//-------------- Loads .env FILE -------------------
+//DotENV does the work to make sure the env file is recongized wven though it is in .ignore
+const dotenv = require('dotenv');
 const User = require('./models/user.js');
 
-
-mongoose.connect('mongodb://localhost/pristine-wireless-website');
+dotenv.config();
+mongoose.connect(process.env.MONGODB_URI);
 
 const app = express();
 
