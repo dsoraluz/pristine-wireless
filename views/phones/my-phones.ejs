@@ -25,10 +25,19 @@
         </div>
 
       </form>
+      <form id="form" action="/phones/new" method="get">
+        <div class="row">
+          <div class="col-12">
+            <button class="add-new-button">Add a New Phone</button>
+          </div>
+
+        </div>
+      </div>
+    </form>
+
     </div>
 
     <div class="col-3">
-      <a href="/phones/new"><button>Add a New Phone</button></a>
     </div>
 
   </div>
@@ -39,8 +48,19 @@
       <div class="row">
     <% } %>
     <div class="col-3">
-      <a href="/phones/<%= phones[index]._id %>/edit"><button>Edit</button></a>
-      <a href="/phones/<%= phones[index]._id %>/delete"><button>Delete</button></a>
+      <div class = "row">
+        <div class = "col-6">
+          <form id="form" action="/phones/<%= phones[index]._id %>/edit" method="get">
+            <button>Edit</button>
+          </form>
+        </div>
+        <div class = "col-6">
+          <form id="form" action="/phones/<%= phones[index]._id %>/delete" method="post">
+            <button>Delete</button>
+          </form>
+        </div>
+      </div>
+
       <ul>
         <img src="<%= phones[index].imageUrl %>" />
         <br></br>

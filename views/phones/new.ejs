@@ -11,8 +11,14 @@
 
     <form id="form" action="/phones" method="post" enctype="multipart/form-data">
       <label for="brand">Brand</label><br>
-      <input type="text" name="brand"
-      placeholder="Apple">
+      <input list="brands" name="brand" placeholder="Select from dropdown or type it in.">
+      <datalist id="brands">
+        <option value="Apple">
+        <option value="Samsung">
+        <option value="Google">
+        <option value="Sony">
+        <option value="LG">
+      </datalist>
       <br><br>
 
       <label for="model">Model</label><br>
@@ -67,5 +73,5 @@
   <div class="col-3">
 
   </div>
-  
+
 </div>
