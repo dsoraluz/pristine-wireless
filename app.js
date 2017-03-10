@@ -44,7 +44,7 @@ app.use(layouts);
 app.use(session({
   secret: "this is a my first web app using express and mongodb",
   resave: true,
-  saveUnitialized: true
+  saveUninitialized: true
 }));
 
 

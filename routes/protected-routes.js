@@ -5,9 +5,34 @@ const User = require('../models/user.js');
 const Phone = require('../models/phone.js');
 const bcrypt = require('bcrypt');
 const multer = require('multer');
-const uploads = multer({
-  dest: __dirname + '/../public/uploads/'
-});
+const multerS3 = require('multer-s3');
+const aws = require('aws-sdk');
+let uploads;
+let getUploadWebAddress;
+
+if(process.env.NODE_ENV === "production"){
+  getUploadWebAddress = (file) => {
+    return file.location;
+  };
+  const s3 = new aws.S3({
+    accessKeyId: process.env.ACCESS_KEY_ID,
+    secretAccessKey: process.env.SECRET_ACCESS_KEY
+  });
+  uploads = multer({
+    storage:multerS3({
+      s3: s3,
+      bucket: process.env.BUCKET_NAME,
+      contentType: multerS3.AUTO_CONTENT_TYPE
+    })
+  });
+}else{
+  getUploadWebAddress = (file) => {
+    return `/uploads/${file.filename}`;
+  };
+  uploads = multer({
+    dest: __dirname + '/../public/uploads/'
+  });
+}
 
 //Get route for the
 protRoutes.get('/phones/new',ensure.ensureLoggedIn(), (req,res,next)=>{
@@ -23,10 +48,9 @@ protRoutes.post('/phones', ensure.ensureLoggedIn(),uploads.single('picture'), (r
   // Note that req.file.filename referes to an attribute of .file that does not get defined by
   // developer.. Meaning that "file.filename" will return the literal filename of the file as a string.
   //It is then used as a means to populate the imageUrl for our phoneInfo object.
-
   let phoneInfo = '';
 
-  if(req.file === 'undefined'){
+  if(req.file === undefined){
     phoneInfo = {
       brand: req.body.brand,
       model: req.body.model,
@@ -40,7 +64,6 @@ protRoutes.post('/phones', ensure.ensureLoggedIn(),uploads.single('picture'), (r
       owner: req.user._id //<-- we add the user ID.. Because of passport, we get to use this.
     };
   }else{
-    const filename = req.file.filename;
     phoneInfo = {
       brand: req.body.brand,
       model: req.body.model,
@@ -51,7 +74,7 @@ protRoutes.post('/phones', ensure.ensureLoggedIn(),uploads.single('picture'), (r
       provider: req.body.provider,
       unlocked: req.body.unlocked,
       additionalDetails: req.body.additionalDetails,
-      imageUrl: `/uploads/${filename}`,
+      imageUrl: getUploadWebAddress(req.file),
       owner: req.user._id //<-- we add the user ID.. Because of passport, we get to use this.
     };
   }
@@ -97,37 +120,11 @@ protRoutes.get('/phones/:id/edit',(req,res,next)=>{
 
 //Post route for edit
 protRoutes.post('/phones/:id',ensure.ensureLoggedIn(),uploads.single('picture'),(req,res,next)=>{
-  // const filename = req.file.filename;
-  // console.log(uploads);
-
   const phoneId = req.params.id;
-  //
-  //
-  // if(req.file){
-  //   let filename = req.file.filename;
-  // }
-  //
-  //
-  // Phone.findById(phoneId, {imageUrl: 1}, (err, currentFilename)=>{
-  //   if(err){
-  //     next(err);
-  //     return;
-  //   }
-  //   console.log("current filename" + currentFilename);
-  //   //If user has changed the phone's image.
-  //   if (req.file.filename === undefined){
-  //     filename = currentFilename;
-  //     console.log("req.file.filename is undefined, filename is equal to currentURL "+ req.file.filename);
-  //   }else{
-  //     filename = req.file.filename;
-  //     console.log("req.file.filename is defined, filename is equal to req.file.filename " + req.file.filename);
-  //
-  //   }
-  //
-  // });
+
   let phoneUpdates = '';
 
-  if(typeof req.file === 'undefined'){
+  if(typeof req.file === undefined){
     phoneUpdates = {
       brand: req.body.brand,
       model: req.body.model,
@@ -153,7 +150,7 @@ protRoutes.post('/phones/:id',ensure.ensureLoggedIn(),uploads.single('picture'),
       provider: req.body.provider,
       unlocked: req.body.unlocked,
       additionalDetails: req.body.additionalDetails,
-      imageUrl: `/uploads/${filename}`,
+      imageUrl: getUploadWebAddress(req.file),
       owner: req.user._id //<-- we add the user ID.. Because of passport, we get to use this.
     };
   }
@@ -193,18 +190,27 @@ protRoutes.get('/dashboard/profile/:id/edit',ensure.ensureLoggedIn(), (req, res,
 
 protRoutes.post('/dashboard/profile/:id',ensure.ensureLoggedIn(),(req,res, next)=>{
   const userId = req.params.id;
+  let userUpdates;
 
-  const password = req.body.newPassword;
+  if(req.body.newPassword){
 
-  const salt = bcrypt.genSaltSync(10);
-  const hashPass = bcrypt.hashSync(password, salt);
+    const salt = bcrypt.genSaltSync(10);
+    const hashPass = bcrypt.hashSync(password, salt);
 
-  const userUpdates = {
-    firstName: req.body.firstName,
-    lastName: req.body.lastName,
-    email: req.body.email,
-    password: hashPass,
-  };
+    userUpdates = {
+      firstName: req.body.firstName,
+      lastName: req.body.lastName,
+      email: req.body.email,
+      password: hashPass,
+    };
+  } else {
+    userUpdates = {
+      firstName: req.body.firstName,
+      lastName: req.body.lastName,
+      email: req.body.email
+    };
+  }
+
 
   User.findByIdAndUpdate(userId, userUpdates, (err, user)=>{
     if(err){
