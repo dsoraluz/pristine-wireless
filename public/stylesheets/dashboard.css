@@ -1,0 +1,42 @@
+.dashboard-heading {
+  text-align: center;
+  font-size: 40px;
+  color: #3D6895;
+
+}
+
+.dashboard-console {
+}
+
+.dashboard-icon img{
+  height: 300px;
+  width: 300px;
+  margin-left: 27%;
+  margin-bottom: 15px;
+
+}
+.dashboard-button {
+  margin-left: 25%;
+  margin-bottom: 45px;
+  background: #43a3e6;
+  border: 5px solid #3D6895;
+  border-radius: 8px;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 18px;
+  padding: 10px 0;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: .3s ease background;
+  box-sizing: border-box;
+  outline: 0;
+  width: 50%;
+}
+
+
+.dashboard-button:hover {
+  background: #fff;
+  color: #43a3e6;
+  transition: .3s ease background;
+}

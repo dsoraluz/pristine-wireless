@@ -25,68 +25,81 @@
         </div>
 
       </form>
-    </div>
+      <form id="form" action="/phones/new" method="get">
+        <div class="row">
+          <div class="col-12">
+            <button class="add-new-button">Add a New Phone</button>
+          </div>
+
+        </div>
+      </div>
+    </form>
 
     <div class="col-3">
-      <a href="/phones/new"><button>Add a New Phone</button></a>
     </div>
-
   </div>
 
 
-      <% for(let columnCount, index = 0; index < phones.length;columnCount +=1, index+=1 ){ %>
-        <div class="row">
-        <% if(columnCount % 4 === 0){ %>
-          <div class="row">
-        <% } %>
-        <div class="col-3">
-          <ul>
-            <img src="<%= phones[index].imageUrl %>" />
-            <br></br>
-            <li>
-              Brand: <%= phones[index].brand %>
-            </li>
-            <br></br>
-            <li>
-              Model: <%= phones[index].model %>
-            </li>
-            <br></br>
-            <li>
-              Condition: <%= phones[index].condition %>
-            </li>
-            <br></br>
-            <li>
-              Color: <%= phones[index].color %>
-            </li>
-            <br></br>
-            <li>
-              Memory: <%= phones[index].memory %>
-            </li>
-            <br></br>
-            <li>
-              Price: $<%= phones[index].price %>
-            </li>
-            <br></br>
-            <li>
-              Provider: <%= phones[index].provider %>
-            </li>
-            <br></br>
-            <li>
-              Unlocked: <%= phones[index].unlocked %>
-            </li>
-            <br></br>
-            <li>
-              Details: <%= phones[index].additionalDetails %>
-            </li>
-            <br></br>
 
-          </ul>
-        </div>
+  <hr />
+  <% for(let columnCount, index = 0; index < phones.length;columnCount +=1, index+=1 ){ %>
+    <div class="row">
+    <% if(columnCount % 4 === 0){ %>
+      <hr />
+      <div class="row">
 
-        <% if(columnCount % 4 === 0){ %>
-        </div>
-      <% } %>
     <% } %>
+    <div class="col-3">
+      <div id="listing-container">
+
+      <ul>
+        <img src="<%= phones[index].imageUrl %>" />
+        <br></br>
+        <li>
+          Brand: <span class="listing-attribute"><strong><%= phones[index].brand %></strong></span>
+        </li>
+        <br></br>
+        <li>
+          Model: <span class="listing-attribute"><strong><%= phones[index].model %></strong></span>
+        </li>
+        <br></br>
+        <li>
+          Condition: <span class="listing-attribute"><strong><%= phones[index].condition %></strong></span>
+        </li>
+        <br></br>
+        <li>
+          Color: <span class="listing-attribute"><strong><%= phones[index].color %></strong></span>
+        </li>
+        <br></br>
+        <li>
+          Memory: <span class="listing-attribute"><strong><%= phones[index].memory %> GB</strong></span>
+        </li>
+        <br></br>
+        <li>
+          Price: <span class="listing-attribute"><strong>$ <%= phones[index].price %></strong></span>
+        </li>
+        <br></br>
+        <li>
+          Provider: <span class="listing-attribute"><strong><%= phones[index].provider %></strong></span>
+        </li>
+        <br></br>
+        <li>
+          Unlocked: <span class="listing-attribute"><strong><%= phones[index].unlocked %></strong></span>
+        </li>
+        <br></br>
+        <li>
+          Details: <span class="listing-attribute"><strong><%= phones[index].additionalDetails %></strong></span>
+        </li>
+        <br></br>
+        <a href="#"><button class="listing-button">Contact Seller</button></a>
+      </ul>
+      </div>
+    </div>
+
+    <% if(columnCount % 4 === 0){ %>
+    </div>
+  <% } %>
+<% } %>
 
   </div>
 

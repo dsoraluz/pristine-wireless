@@ -2,7 +2,7 @@
 
 body {
   padding: 0;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font: 14px 'Nunito', sans-serif;
 }
 
 
@@ -15,6 +15,13 @@ img {
     height: auto;
 }
 
+ul {
+  list-style: none;
+  font-size: 18px;
+  padding: 0;
+}
+
+
 .selected {
   color: blue;
 }
@@ -26,6 +33,7 @@ img {
 }
 
 .header button {
+  padding-top: 10px;
   background-color: #3D3D3D;
   border: none;
   color: white;
@@ -38,20 +46,21 @@ img {
   color: #62B331;
 }
 
-/*.logo {
-  margin: 0 auto;
+.logo {
+  height: 15px;
 
-}*/
+}
 .navbar a{
   margin-top: 10px;
   padding: 7px;
 }
 
 .phone-number{
-  font-size: 20px;
+  font-size: 25px;
   color: #04ACE2;
   margin-right: 75px;
   float: right;
+  padding-top: 5px;
   }
 
 

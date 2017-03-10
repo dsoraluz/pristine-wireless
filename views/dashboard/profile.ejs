@@ -1,19 +1,37 @@
 <div class="section">
   <div class="container">
-
-    <div class="row">
-
+    <div class="row dashboard-heading">
       <div class="col-3">
-        <a href="/phones/my-phones"><button>View my phones</button></a>
-      </div>
 
-      <div id="auth-title" class="col-6">
+      </div>
+      <div class="col-6">
         <h1><%= user.firstName %>'s Dashboard</h1>
-        <a href="/dashboard/profile/<%= user._id %>/edit"><button>Edit Profile</button></a>
+      </div>
+      <div class="col-3">
+      </div>
+    </div>
+
+    <div class="row dashboard-console">
+
+      <div class="col-4">
+        <div class="dashboard-icon">
+          <img src="../images/browser.png" />
+        </div>
+        <a href="/phones/my-phones"><button class = "dashboard-button">View my phones</button></a>
       </div>
 
-      <div class="col-3">
-        <a href="/phones/new"><button>Add a New Phone</button></a>
+      <div class="col-4">
+        <div class="dashboard-icon">
+          <img src="../images/multimedia.png" />
+        </div>
+        <a href="/dashboard/profile/<%= user._id %>/edit"><button class = "dashboard-button">Edit Profile</button></a>
+      </div>
+
+      <div class="col-4">
+        <div class="dashboard-icon">
+          <img src="../images/business.png" />
+        </div>
+        <a href="/phones/new"><button class = "dashboard-button">Add a New Phone</button></a>
       </div>
 
     </div>

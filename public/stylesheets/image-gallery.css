@@ -1,0 +1,50 @@
+
+.listing-row {
+  background-color: #fff;
+}
+#listing-container {
+  background-color: lightgrey;
+  padding: 10px 25px 0px 20px;
+  border: 10px;
+  border-radius: 50px;
+}
+
+#listing-container img{
+  border-radius: 50px;
+  box-shadow: 1px 8px 5px grey;
+}
+
+#listing-container img:hover{
+  border-radius: 50px;
+  box-shadow: 5px 10px 5px grey;
+}
+
+.listing-attribute {
+  font-size: 20px;
+  margin-left: 5px;
+}
+
+.listing-button {
+  margin-left: 12%;
+  margin-bottom: 45px;
+  background: #3D3D3D;
+  border: 1px solid #3D3D3D;
+  border-radius: 4px;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 18px;
+  padding: 10px 0;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: .3s ease background;
+  box-sizing: border-box;
+  outline: 0;
+  width: 75%;
+}
+
+.listing-button:hover {
+  background: #62B331;
+  color: #fff;
+  transition: .3s ease background;
+}
