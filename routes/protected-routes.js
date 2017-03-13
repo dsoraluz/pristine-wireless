@@ -138,7 +138,6 @@ protRoutes.post('/phones/:id',ensure.ensureLoggedIn(),uploads.single('picture'),
       owner: req.user._id //<-- we add the user ID.. Because of passport, we get to use this.
     };
   }else{
-    const filename = req.file.filename;
 
     phoneUpdates = {
       brand: req.body.brand,
